@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Music to Dance Project</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="mobile-menu-open" class="shadow-large">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </div>
+
+    <div id="projects" class="background-alt">
+        <h2 class="heading"> Creative Audio-to-Video Dance Generation with End-to-End Architecture and Temporal Continuity</h2>
+        <div class="container">
+            <div class="row">
+                <div class="container">
+                    <div class="col-md">
+                        <p>
+                            Demo video of progress so far can be found <a href = "https://youtu.be/IWalAcjar9Y">HERE</a>.
+                        </p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-md">
+                        <p>
+                            The project is about enable machine to generate choreographed dance moves conditioned on input music.
+                        </p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-md">
+                        <p>
+                            The input is music and output are frames of coordinates of each joints.
+                            The architecture is designed based on the concepts of GAN and hLSTMat, a hierarchical LSTM with modified attention mechanism. 
+                            Because each generated dance pose frame is only responsible for a brief amount of time, some frames need information from previously-generated frames more than they need audio information. 
+                            As a result, I have designed the model to dynamically weigh the importance of audio and pose embedding encoded separately by two stacked 2-layer GRUs, since GRU outperforms LSTM block in experimental results. 
+                        </p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-md">
+                        <p>
+                            I plan to use style ambiguity cross entropy loss function to punish well-classified batches so the model can generate different or even mixed styles of dance after I finish collecting a large volume of single dance video clips. 
+                            So far, I have amassed 4 different dance styles and around 800 songs. 
+                            The promising output dance sequence is being tested and trained on a Korean pop database.
+                        </p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-md">
+                        <p>
+                            This project’s contributions include a large database, extraction of useful information from long sequential audio input, consideration of the integrity of full songs, and added creativity in terms of dance styles.
+                        </p>
+                    </div>
+                </div>
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/M2D_arch.png" width="500" height="500" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="col-md">
+                        <h3>Music to Dance Architecture</h3>
+                        <p>
+                            0. This architecture is one of many experiment structures, not the final version.
+                        </p>
+                        <p>
+                            1. Input waveform of the music and use CNN to encode.
+                        </p>
+                        <p>
+                            2. The two 2-layer GRUs are served as audio-encoder and pose-encoder.
+                        </p>
+                        <p>
+                            3. Local Discriminator is to assure the smoothness between frames temporally.
+                        </p>
+                        <p>
+                            4. Global Discriminator is to check if generated dance has style aligned with music style.
+                        </p>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/M2D_att.png" width="350" height="500" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="col-md">
+                        <h3>Attention Architecture</h3>
+                        <p>
+                            0. This architecture is one of many experiment structures, not the final version.
+                        </p>
+                        <p>
+                            1. Attention_0 (yellow part) is to weigh the importance among all the windows in this batch.
+                        </p>
+                        <p>
+                            2. Attention_1 (brown part) is to weigh the importance between audio embedding and pose embedding.
+                        </p>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+            </div>
+        </div>
+    </div>
+    <!-- End #projects -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/scripts.min.js"></script>
+</body>
+
+</html>

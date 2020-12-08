@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EEG Project</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="mobile-menu-open" class="shadow-large">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </div>
+
+    <div id="projects" class="background-alt">
+        <h2 class="heading">Visual Stimulated EEG Signal Analysis Detected from Forehead</h2>
+        <div class="container">
+            <div class="row">
+                <div class="container">
+                    <div class="col-md">
+                        <p>
+                            The project is about enable patients who can only lie in bed to "click" a button through this brain-computer interface by just staring at it.
+                        </p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-md">
+                        <p>
+                            During expiriments, I designed the flickering light blocks as visual stimuli. 
+                            Then, different frequency were encoded in each stimulus in order to generate different characteristics in signal. 
+                            The subjects were asked to wear an electrode cap and look at different flickering lights by vocal instruction. 
+                            The EEG signals were recorded by the electrons and sent to computer through Arduino chip.
+                            I used Matlab to process the EEG signal to find the characteristics. 
+                            Finally, I checked if these characteristics were correspondent to the stared stimulus' tag. 
+                        </p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-md">
+                        <p>
+                            The most difficult part of this project is signal processing. 
+                            The visual stimulated EEG signal is much weaker in forehead compared to the one detected in hindbrain. 
+                            Yet, placing electrodes in hindbrain is already inconvenient for healthy subjects, let alone patients who can only lie in bed.
+                            I used techniques such like superposition to reduce random noice and enhence the characteristic in signal.
+                            The accuracy of predicting which button the subject was staring at is up to 70% during testing phase.
+                        </p>
+                    </div>
+                </div>
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/EEG_process_flow.jpg" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="col-md">
+                        <h3>EEG Process Flow</h3>
+                        <p>
+                            0. FVEP: Flash Visual Evoked Potentials, which is the EEG signal.
+                        </p>
+                        <p>
+                            1. Filter out the white noise caused by other appliances.
+                        </p>
+                        <p>
+                            2. Cut EEG signals into epochs, which means signal with shorter time durations.
+                        </p>
+                        <p>
+                            3. Average each epoch to suppress random non-target characteristics.
+                        </p>
+                        <p>
+                            4. Compute the largest onset potential and identify the gazed target.
+                        </p>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/electron_map.jpg" width="500" height="500" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="col-md">
+                        <h3>Electron Position</h3>
+                        <p>
+                            I collected EEG signals from FPz(forehead), Oz(hindbrain), A1(left ear), A2(right ear).
+                        </p>
+                        <p>
+                            During processing, I could also see that the signal magnitude gradually decreased from hindbrain to forehead, which demonstrates the EEG signal is indeed generated from hindbrain.
+                        </p>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+            </div>
+        </div>
+    </div>
+    <!-- End #projects -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/scripts.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autonomous Driving Models</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="mobile-menu-open" class="shadow-large">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </div>
+
+    <div id="projects" class="background-alt">
+        <h2 class="heading"> Road Segmentation and Object Detection Models for Autonomous Driving System</h2>
+        <div class="container">
+            <div class="row">
+                <div class="container">
+                    <div class="col-md">
+                        <p>
+                            These models are aim to assist autonomous driving system to "see" the road/lane markings and objects, such like pedestrians. Also, it is designed to "read" traffic signal/sign.  
+                        </p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-md">
+                        <p>
+                            I used YOLOv3 Darknet version as the backbone of the object detection model and ENet as the segmentation model. 
+                            While studying and fine-tuning the architectures, I ported them to the Nvidia Drive Pegasus by converting the models into TensorRT ones with reduced floating point precision from FP32 to FP16 and INT8. 
+                            The models with FP16 precision could still output results with comparable accuracy, and even reduce the precision to INT8 without a reduction in performance for the segmentation model. 
+                            Since layers like PReLU and customized upsampling layer are not originally supported by TensorRT, I wrote my own plugin layers in cuda code.
+                        </p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-md">
+                        <p>
+                            The part I developed was then ported onto a real vehicle, enabling it to automatically stop when “seeing” pedestrians walk by or a traffic light turn red.
+                        </p>
+                    </div>
+                </div>
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/ITRI_seg.png" width="900" height="250" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="col-md">
+                        <h3>Road/Lane Segmentation result tested on KITTI Road/Lane Detection Evaluation 2013 Benchmark</h3>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/ITRI_obj.png" width="900" height="250" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="col-md">
+                        <h3>Object Detection for vehicles and traffic lights</h3>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+            </div>
+        </div>
+    </div>
+    <!-- End #projects -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/scripts.min.js"></script>
+</body>
+
+</html>
